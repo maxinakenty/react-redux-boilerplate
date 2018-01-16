@@ -12,6 +12,17 @@ module.exports = {
     filename: '[name].js',
   },
   devtool: 'eval',
+  watch: true,
+  // watchOptions: {
+  //   aggregateTimeout: 100,
+  // },
+  devServer: {
+    port: 3000,
+    hot: true,
+    stats: {
+      'errors-only': true,
+    },
+  },
   plugins: [
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify('development'),
@@ -86,21 +97,13 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: '[local]__[hash:base64:8]',
             },
           },
         ],
       },
     ],
-  },
-  watch: true,
-  watchOptions: {
-    aggregateTimeout: 100,
-  },
-  devServer: {
-    port: 3000,
-    hot: true,
-    stats: {
-      'errors-only': true,
-    },
   },
 };

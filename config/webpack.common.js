@@ -31,7 +31,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             query: {
-              presets: ['env', 'stage-0', 'react'],
+              presets: ['env', 'stage-0'],
               plugins: [
                 [
                   'react-css-modules',
