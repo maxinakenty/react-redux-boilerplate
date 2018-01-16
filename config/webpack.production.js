@@ -25,6 +25,35 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /'.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: false,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: false,
+              config: {
+                path: join(__dirname, 'postcss.config.js'),
+                ctx: {
+                  autoprefixer: {
+                    browsers: ['last 2 version', '> 5%'],
+                  },
+                  short: {},
+                  cssnano: {},
+                },
+              },
+            },
+          },
+          'resolve-url-loader',
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
