@@ -28,6 +28,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: '[local]__[hash:base64:8]',
             },
           },
           {
@@ -57,6 +60,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: '[local]__[hash:base64:8]',
             },
           },
           {

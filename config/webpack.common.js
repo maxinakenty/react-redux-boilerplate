@@ -9,11 +9,7 @@ const PATH = {
 
 module.exports = {
   entry: {
-    bundle: [
-      'babel-polyfill',
-      'react-hot-loader/patch',
-      `${PATH.src}/index.jsx`,
-    ],
+    bundle: ['babel-polyfill', `${PATH.src}/index`],
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
@@ -32,12 +28,24 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
         use: [
-          'react-hot-loader/webpack',
           {
             loader: 'babel-loader',
             query: {
               presets: ['env', 'stage-0', 'react'],
-              plugins: ['react-hot-loader/babel'],
+              plugins: [
+                [
+                  'react-css-modules',
+                  {
+                    generateScopedName: '[local]__[hash:base64:8]',
+                    filetypes: {
+                      '.scss': {
+                        syntax: 'postcss-scss',
+                      },
+                    },
+                    webpackHotModuleReloading: true,
+                  },
+                ],
+              ],
             },
           },
         ],
