@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATH = {
-  src: join.join(__dirname, '..', 'src'),
-  dist: join.join(__dirname, '..', 'dist'),
+  src: join(__dirname, '..', 'src'),
+  dist: join(__dirname, '..', 'dist'),
 };
 
 module.exports = {
@@ -32,7 +32,6 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
         use: [
           'style-loader',
           {
@@ -41,24 +40,22 @@ module.exports = {
               sourceMap: true,
             },
           },
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     sourceMap: true,
-          //     config: {
-          //       path: join(__dirname, 'postcss.config.js'),
-          //       ctx: {
-          //         autoprefixer: {
-          //           browsers: ['last 2 version', '> 5%'],
-          //         },
-          //         flexbugsFixes: {},
-          //         short: {},
-          //         cssnano: {},
-          //         modules: {},
-          //       },
-          //     },
-          //   },
-          // },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: join(__dirname, 'postcss.config.js'),
+                ctx: {
+                  autoprefixer: {
+                    browsers: ['last 2 version', '> 5%'],
+                  },
+                  short: {},
+                  cssnano: {},
+                },
+              },
+            },
+          },
           'resolve-url-loader',
           {
             loader: 'sass-loader',
