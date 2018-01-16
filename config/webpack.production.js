@@ -14,6 +14,7 @@ module.exports = {
     publicPath: '/',
     filename: 'js/[name].[chunkhash].js',
   },
+  devtool: false,
   plugins: [
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify('production'),

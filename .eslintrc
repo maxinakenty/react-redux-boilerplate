@@ -1,12 +1,8 @@
 {
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "allowImportExportEverywhere": true
-  },
-  "extends": ["airbnb-base", "prettier"],
+  "extends": ["airbnb", "prettier/react"],
   "plugins": ["prettier"],
   "env": {
-    "node": true,
-    "browser": true
+    "browser": true,
+    "node": true
   }
 }

@@ -11,6 +11,7 @@ module.exports = {
     publicPath: '/',
     filename: '[name].js',
   },
+  devtool: 'eval',
   plugins: [
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify('development'),

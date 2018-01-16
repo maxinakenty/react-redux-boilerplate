@@ -9,7 +9,14 @@ const PATH = {
 
 module.exports = {
   entry: {
-    bundle: ['babel-polyfill', `${PATH.src}/index.js`],
+    bundle: [
+      'babel-polyfill',
+      'react-hot-loader/patch',
+      `${PATH.src}/index.js`,
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss'],
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
@@ -22,14 +29,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: [/node_modules/],
-        use: {
-          loader: 'babel-loader',
-          query: {
-            presets: ['env', 'stage-0', 'react'],
+        use: [
+          'react-hot-loader/webpack',
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['env', 'stage-0', 'react'],
+              plugins: ['react-hot-loader/babel'],
+            },
           },
-        },
+        ],
       },
       {
         test: /\.pug$/,
