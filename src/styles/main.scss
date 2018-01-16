@@ -1,0 +1,9 @@
+@import '~accoutrement-init/sass/_init.scss';
+@import 'global.scss';
+@import 'typography.scss';
+
+#root {
+  height: 1px;
+  min-height: 100vh;
+  background-color: aquamarine;
+}

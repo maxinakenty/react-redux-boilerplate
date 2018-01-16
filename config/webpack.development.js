@@ -1,7 +1,5 @@
 const { join } = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -18,16 +16,6 @@ module.exports = {
       NODE_ENV: JSON.stringify('development'),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: `${PATH.src}/pages/index/index.pug`,
-      filename: 'index.html',
-      chunks: ['common', 'index'],
-    }),
-    new HtmlWebpackPlugin({
-      template: `${PATH.src}/pages/about/about.pug`,
-      filename: 'about.html',
-      chunks: ['common', 'index'],
-    }),
   ],
   module: {
     rules: [

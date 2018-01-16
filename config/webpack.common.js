@@ -8,28 +8,15 @@ const PATH = {
 };
 
 module.exports = {
-  context: PATH.src,
   entry: {
-    common: `${PATH.src}/layouts/index.js`,
-    index: `${PATH.src}/pages/index`,
-    about: `${PATH.src}/pages/about`,
+    bundle: ['babel-polyfill', `${PATH.src}/index.js`],
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-    }),
     new HtmlWebpackPlugin({
       title: 'Index',
-      template: `${PATH.src}/pages/index/index.pug`,
+      template: `${PATH.src}/index.html`,
       filename: 'index.html',
-      chunks: ['common', 'index'],
-    }),
-    new HtmlWebpackPlugin({
-      title: 'About',
-      template: `${PATH.src}/pages/about/about.pug`,
-      filename: 'about.html',
-      chunks: ['common', 'index'],
     }),
   ],
   module: {
@@ -40,7 +27,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            presets: ['es2015', 'stage-0'],
+            presets: ['env', 'stage-0', 'react'],
           },
         },
       },
