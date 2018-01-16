@@ -4,12 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATH = {
   src: path.join(__dirname, '..', 'src'),
-  dist: path.join(__dirname, '..', 'dist'),
 };
 
 module.exports = {
   entry: {
-    bundle: ['babel-polyfill', `${PATH.src}/index`],
+    bundle: ['babel-polyfill', `${PATH.src}/index.jsx`],
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
@@ -31,7 +30,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             query: {
-              presets: ['env', 'stage-0'],
+              presets: ['env', 'stage-0', 'react'],
               plugins: [
                 [
                   'react-css-modules',
@@ -49,15 +48,6 @@ module.exports = {
             },
           },
         ],
-      },
-      {
-        test: /\.pug$/,
-        use: {
-          loader: 'pug-loader',
-          options: {
-            pretty: true,
-          },
-        },
       },
     ],
   },

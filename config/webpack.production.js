@@ -62,6 +62,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg|gif|svg|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[hash:8].[ext]',
+            },
+          },
+        ],
+      },
+      {
         test: /'.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',

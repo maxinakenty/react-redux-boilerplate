@@ -1,11 +1,5 @@
 const { join } = require('path');
 const webpack = require('webpack');
-
-const PATH = {
-  src: join(__dirname, '..', 'src'),
-  dist: join(__dirname, '..', 'dist'),
-};
-
 module.exports = {
   output: {
     publicPath: '/',
@@ -13,9 +7,9 @@ module.exports = {
   },
   devtool: 'eval',
   watch: true,
-  // watchOptions: {
-  //   aggregateTimeout: 100,
-  // },
+  watchOptions: {
+    aggregateTimeout: 100,
+  },
   devServer: {
     port: 3000,
     hot: true,
@@ -31,6 +25,17 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.(png|jpg|gif|svg|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]',
+            },
+          },
+        ],
+      },
       {
         test: /'.css$/,
         use: [

@@ -5,8 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
-    "demo": "static dist",
+    "build":
+      "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
+    "demo": "static -a 0.0.0.0 dist",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -21,7 +22,7 @@
     "babel-plugin-react-css-modules": "^3.3.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.8",
