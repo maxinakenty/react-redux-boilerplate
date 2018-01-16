@@ -10,7 +10,7 @@ const PATH = {
 module.exports = {
   context: PATH.src,
   entry: {
-    common: `${PATH.src}/layouts/common.js`,
+    common: `${PATH.src}/layouts/index.js`,
     index: `${PATH.src}/pages/index`,
     about: `${PATH.src}/pages/about`,
   },
