@@ -16,12 +16,17 @@ module.exports = {
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+    }),
     new HtmlWebpackPlugin({
+      title: 'Index',
       template: `${PATH.src}/pages/index/index.pug`,
       filename: 'index.html',
       chunks: ['common', 'index'],
     }),
     new HtmlWebpackPlugin({
+      title: 'About',
       template: `${PATH.src}/pages/about/about.pug`,
       filename: 'about.html',
       chunks: ['common', 'index'],
