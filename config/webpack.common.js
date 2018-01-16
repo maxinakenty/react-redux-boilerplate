@@ -12,7 +12,7 @@ module.exports = {
     bundle: [
       'babel-polyfill',
       'react-hot-loader/patch',
-      `${PATH.src}/index.js`,
+      `${PATH.src}/index.jsx`,
     ],
   },
   resolve: {
