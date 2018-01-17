@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
-    "build":
-      "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
     "demo": "static -a 0.0.0.0 dist",
     "clean": "rimraf dist"
   },
@@ -40,11 +39,13 @@
     "postcss-scss": "^1.0.3",
     "postcss-short": "^4.1.0",
     "prettier": "^1.10.2",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "remote-redux-devtools": "^0.5.12",
     "resolve-url-loader": "^2.2.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
