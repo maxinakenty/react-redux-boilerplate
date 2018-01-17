@@ -32,6 +32,7 @@ module.exports = {
             query: {
               presets: ['env', 'stage-0', 'react'],
               plugins: [
+                'react-hot-loader/babel',
                 [
                   'react-css-modules',
                   {

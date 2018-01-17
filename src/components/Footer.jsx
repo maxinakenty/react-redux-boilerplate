@@ -3,7 +3,7 @@ import FilterLink from '../containers/FilterLInk';
 
 const Footer = () => (
   <footer>
-    <FilterLink filter="SHOW_ALL">All</FilterLink>
+    <FilterLink filter="SHOW_ALL">Ally</FilterLink>
     {', '}
     <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
     {', '}
