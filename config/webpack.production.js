@@ -2,6 +2,7 @@ const { join } = require('path');
 const webpack = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { browsers, cssModulesHash } = require('./config');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -10,7 +11,7 @@ const PATH = {
 
 module.exports = {
   output: {
-    path: join(__dirname, '..', 'dist'),
+    path: PATH.dist,
     publicPath: '/',
     filename: 'js/[name].[chunkhash].js',
   },
@@ -83,7 +84,7 @@ module.exports = {
                 sourceMap: false,
                 modules: true,
                 importLoaders: 2,
-                localIdentName: '[local]__[hash:base64:8]',
+                localIdentName: cssModulesHash,
               },
             },
             {
@@ -94,7 +95,7 @@ module.exports = {
                   path: join(__dirname, 'postcss.config.js'),
                   ctx: {
                     autoprefixer: {
-                      browsers: ['last 2 version', '> 5%'],
+                      browsers,
                     },
                     short: {},
                     cssnano: {},
@@ -117,7 +118,7 @@ module.exports = {
                 sourceMap: false,
                 modules: true,
                 importLoaders: 2,
-                localIdentName: '[local]__[hash:base64:8]',
+                localIdentName: cssModulesHash,
               },
             },
             {
@@ -128,7 +129,7 @@ module.exports = {
                   path: join(__dirname, 'postcss.config.js'),
                   ctx: {
                     autoprefixer: {
-                      browsers: ['last 2 version', '> 5%'],
+                      browsers,
                     },
                     short: {},
                     cssnano: {},
@@ -143,7 +144,7 @@ module.exports = {
                 sourceMap: false,
                 modules: true,
                 importLoaders: 2,
-                localIdentName: '[local]__[hash:base64:8]',
+                localIdentName: cssModulesHash,
               },
             },
           ],

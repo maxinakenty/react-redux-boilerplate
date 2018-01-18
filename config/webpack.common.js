@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { browsers, cssModulesHash } = require('./config');
 
 const PATH = {
   src: path.join(__dirname, '..', 'src'),
@@ -30,13 +31,22 @@ module.exports = {
           {
             loader: 'babel-loader',
             query: {
-              presets: ['env', 'stage-0', 'react'],
+              presets: [
+                [
+                  'env',
+                  {
+                    targets: browsers,
+                  },
+                ],
+                'stage-0',
+                'react',
+              ],
               plugins: [
                 'react-hot-loader/babel',
                 [
                   'react-css-modules',
                   {
-                    generateScopedName: '[local]__[hash:base64:8]',
+                    generateScopedName: cssModulesHash,
                     filetypes: {
                       '.scss': {
                         syntax: 'postcss-scss',

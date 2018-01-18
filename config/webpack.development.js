@@ -1,5 +1,7 @@
 const { join } = require('path');
 const webpack = require('webpack');
+const { browsers, cssModulesHash } = require('./config');
+
 module.exports = {
   output: {
     publicPath: '/',
@@ -46,7 +48,7 @@ module.exports = {
               sourceMap: true,
               modules: true,
               importLoaders: 2,
-              localIdentName: '[local]__[hash:base64:8]',
+              localIdentName: cssModulesHash,
             },
           },
           {
@@ -57,7 +59,7 @@ module.exports = {
                 path: join(__dirname, 'postcss.config.js'),
                 ctx: {
                   autoprefixer: {
-                    browsers: ['last 2 version', '> 5%'],
+                    browsers,
                   },
                   short: {},
                   cssnano: {},
@@ -77,7 +79,7 @@ module.exports = {
               sourceMap: true,
               modules: true,
               importLoaders: 2,
-              localIdentName: '[local]__[hash:base64:8]',
+              localIdentName: cssModulesHash,
             },
           },
           {
@@ -88,7 +90,7 @@ module.exports = {
                 path: join(__dirname, 'postcss.config.js'),
                 ctx: {
                   autoprefixer: {
-                    browsers: ['last 2 version', '> 5%'],
+                    browsers,
                   },
                   short: {},
                   cssnano: {},
@@ -103,7 +105,7 @@ module.exports = {
               sourceMap: true,
               modules: true,
               importLoaders: 2,
-              localIdentName: '[local]__[hash:base64:8]',
+              localIdentName: cssModulesHash,
             },
           },
         ],
