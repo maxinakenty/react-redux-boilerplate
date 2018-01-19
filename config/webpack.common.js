@@ -1,10 +1,10 @@
-const path = require('path');
+const { join } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { browsers, cssModulesHash } = require('./config');
 
 const PATH = {
-  src: path.join(__dirname, '..', 'src'),
+  src: join(__dirname, '..', 'src'),
 };
 
 module.exports = {

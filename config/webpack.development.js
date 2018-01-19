@@ -2,6 +2,10 @@ const { join } = require('path');
 const webpack = require('webpack');
 const { browsers, cssModulesHash } = require('./config');
 
+const PATH = {
+  postcssConfig: join(__dirname, 'postcss.config.js'),
+};
+
 module.exports = {
   output: {
     publicPath: '/',
@@ -56,7 +60,7 @@ module.exports = {
             options: {
               sourceMap: true,
               config: {
-                path: join(__dirname, 'postcss.config.js'),
+                path: PATH.postcssConfig,
                 ctx: {
                   autoprefixer: {
                     browsers,
@@ -87,7 +91,7 @@ module.exports = {
             options: {
               sourceMap: true,
               config: {
-                path: join(__dirname, 'postcss.config.js'),
+                path: PATH.postcssConfig,
                 ctx: {
                   autoprefixer: {
                     browsers,

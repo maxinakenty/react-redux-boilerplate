@@ -7,6 +7,7 @@ const { browsers, cssModulesHash } = require('./config');
 const PATH = {
   src: join(__dirname, '..', 'src'),
   dist: join(__dirname, '..', 'dist'),
+  postcssConfig: join(__dirname, 'postcss.config.js'),
 };
 
 module.exports = {
@@ -92,7 +93,7 @@ module.exports = {
               options: {
                 sourceMap: false,
                 config: {
-                  path: join(__dirname, 'postcss.config.js'),
+                  path: PATH.postcssConfig,
                   ctx: {
                     autoprefixer: {
                       browsers,
@@ -126,7 +127,7 @@ module.exports = {
               options: {
                 sourceMap: false,
                 config: {
-                  path: join(__dirname, 'postcss.config.js'),
+                  path: PATH.postcssConfig,
                   ctx: {
                     autoprefixer: {
                       browsers,
