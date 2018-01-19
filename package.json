@@ -1,5 +1,5 @@
 {
-  "react-redux-boilerplate": "test",
+  "name": "react-redux-boilerplate",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -8,7 +8,11 @@
     "build":
       "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
     "demo": "static -a 0.0.0.0 dist",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "unit:watch": "jest --watch"
+  },
+  "jest": {
+    "collectCoverage": true
   },
   "dependencies": {
     "accoutrement-color": "^2.2.2",
@@ -63,6 +67,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^22.1.3"
   }
 }
