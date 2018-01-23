@@ -1,10 +1,15 @@
-import { combineReducers } from 'redux';
-import todos from './todos';
-import visibilityFilter from './visibilityFilter';
+import { INCREMENT, DECREMENT } from '../constants/actionTypes';
 
-const todoApp = combineReducers({
-  todos,
-  visibilityFilter,
-});
+const rootReducer = (state = 0, action) => {
+  switch (action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
 
-export default todoApp;
+    default:
+      return state;
+  }
+};
+
+export default rootReducer;
