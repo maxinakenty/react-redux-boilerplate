@@ -5,17 +5,17 @@ import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 import { increment, decrement } from '../actions';
 
-const Counter = ({ state, onIncrement, onDecrement }) => (
-  <div className="App">
-    <h1>Simple counter</h1>
-    <h2>{state}</h2>
-    <button onClick={onIncrement}>+</button>
-    <button onClick={onDecrement}>-</button>
-  </div>
-);
+const Counter = props => {
+  console.log(props);
+  return (
+    <div className="App">
+      <h1>Simple counter</h1>
+    </div>
+  );
+};
 
 Counter.propTypes = {
-  state: PropTypes.number.isRequired,
+  // state: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
   onDecrement: PropTypes.func.isRequired,
 };
@@ -29,9 +29,9 @@ const mapDispatchToProps = ({ dispatch }) => ({
   },
 });
 
-const mapStateToProps = ({ state }) => ({
-  state,
-});
+const mapStateToProps = ({ state }) => {
+  console.log(state);
+};
 
 const App = connect(mapDispatchToProps, mapStateToProps)(Counter);
 
