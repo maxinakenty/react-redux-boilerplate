@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
-    "build":
-      "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
     "demo": "static -a 0.0.0.0 dist",
     "clean": "rimraf dist",
     "unit:watch": "jest --watch"
@@ -30,7 +29,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.3",
-    "css-loader": "^0.28.8",
+    "css-loader": "^0.28.9",
     "cssnano": "^3.10.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.5.0",

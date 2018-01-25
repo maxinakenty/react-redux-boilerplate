@@ -9,7 +9,7 @@ const PATH = {
 
 module.exports = {
   entry: {
-    bundle: ['babel-polyfill', `${PATH.src}/index.jsx`],
+    bundle: ['babel-polyfill', `${PATH.src}/index`],
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
