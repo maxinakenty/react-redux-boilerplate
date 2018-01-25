@@ -29,9 +29,6 @@ module.exports = {
       NODE_ENV: JSON.stringify('development'),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('css/[name].css', {
-      allChunks: true,
-    }),
   ],
   module: {
     rules: [
@@ -48,80 +45,76 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true,
-                modules: true,
-                importLoaders: 2,
-                localIdentName: cssModulesHash,
-              },
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: cssModulesHash,
             },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true,
-                config: {
-                  path: PATH.postcssConfig,
-                  ctx: {
-                    autoprefixer: {
-                      browsers,
-                    },
-                    short: {},
-                    cssnano: {},
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: PATH.postcssConfig,
+                ctx: {
+                  autoprefixer: {
+                    browsers,
                   },
+                  short: {},
+                  cssnano: {},
                 },
               },
             },
-            'resolve-url-loader',
-          ],
-        }),
+          },
+          'resolve-url-loader',
+        ],
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true,
-                modules: true,
-                importLoaders: 2,
-                localIdentName: cssModulesHash,
-              },
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: cssModulesHash,
             },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true,
-                config: {
-                  path: PATH.postcssConfig,
-                  ctx: {
-                    autoprefixer: {
-                      browsers,
-                    },
-                    short: {},
-                    cssnano: {},
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: PATH.postcssConfig,
+                ctx: {
+                  autoprefixer: {
+                    browsers,
                   },
+                  short: {},
+                  cssnano: {},
                 },
               },
             },
-            'resolve-url-loader',
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-                modules: true,
-                importLoaders: 2,
-                localIdentName: cssModulesHash,
-              },
+          },
+          'resolve-url-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: cssModulesHash,
             },
-          ],
-        }),
+          },
+        ],
       },
     ],
   },
