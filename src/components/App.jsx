@@ -3,11 +3,11 @@ import { hot } from 'react-hot-loader';
 import AddTodo from '../containers/AddTodo';
 import VisibleTodoList from '../containers/VisibleTodoList';
 import Footer from './Footer';
-import './App.scss';
+import './App.css';
 
 const App = () => (
   <div className="App">
-    <h1>React Todo</h1>
+    <h1 styleName="title">React Todo</h1>
     <AddTodo />
     <VisibleTodoList />
     <Footer />

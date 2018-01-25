@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App';
 import TodoApp from './reducers/';
+import './index.scss';
 
 /* eslint-disable no-underscore-dangle */
 const store = createStore(

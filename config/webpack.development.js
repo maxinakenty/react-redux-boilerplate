@@ -1,6 +1,7 @@
 const { join } = require('path');
 const webpack = require('webpack');
 const { browsers, cssModulesHash } = require('./config');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATH = {
   postcssConfig: join(__dirname, 'postcss.config.js'),
@@ -28,6 +29,9 @@ module.exports = {
       NODE_ENV: JSON.stringify('development'),
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin('css/[name].css', {
+      allChunks: true,
+    }),
   ],
   module: {
     rules: [
@@ -43,76 +47,81 @@ module.exports = {
         ],
       },
       {
-        test: /'.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              importLoaders: 2,
-              localIdentName: cssModulesHash,
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                importLoaders: 2,
+                localIdentName: cssModulesHash,
+              },
             },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              config: {
-                path: PATH.postcssConfig,
-                ctx: {
-                  autoprefixer: {
-                    browsers,
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                config: {
+                  path: PATH.postcssConfig,
+                  ctx: {
+                    autoprefixer: {
+                      browsers,
+                    },
+                    short: {},
+                    cssnano: {},
                   },
-                  short: {},
-                  cssnano: {},
                 },
               },
             },
-          },
-          'resolve-url-loader',
-        ],
+            'resolve-url-loader',
+          ],
+        }),
       },
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              importLoaders: 2,
-              localIdentName: cssModulesHash,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                importLoaders: 2,
+                localIdentName: cssModulesHash,
+              },
             },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              config: {
-                path: PATH.postcssConfig,
-                ctx: {
-                  autoprefixer: {
-                    browsers,
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                config: {
+                  path: PATH.postcssConfig,
+                  ctx: {
+                    autoprefixer: {
+                      browsers,
+                    },
+                    short: {},
+                    cssnano: {},
                   },
-                  short: {},
-                  cssnano: {},
                 },
               },
             },
-          },
-          'resolve-url-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              importLoaders: 2,
-              localIdentName: cssModulesHash,
+            'resolve-url-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                importLoaders: 2,
+                localIdentName: cssModulesHash,
+              },
             },
-          },
-        ],
+          ],
+        }),
       },
     ],
   },

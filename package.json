@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
-    "build":
-      "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
     "demo": "static -a 0.0.0.0 dist",
     "clean": "rimraf dist",
     "unit:watch": "jest --watch"
