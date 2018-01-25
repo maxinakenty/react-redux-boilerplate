@@ -7,6 +7,7 @@ import App from './components/App';
 import './index.scss';
 
 import TodoApp from './reducers/';
+import './index.scss';
 
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
