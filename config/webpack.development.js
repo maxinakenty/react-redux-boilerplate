@@ -3,9 +3,9 @@ const webpack = require('webpack');
 const { browsers, cssModulesHash } = require('./webpack.options');
 const createHappyPackPlugin = require('./helpers/happypack');
 const {
-  happypackImages,
-  happypackCss,
-  happypackScss,
+  happypackLoaderImages,
+  happypackLoaderCss,
+  happypackLoaderScss,
 } = require('./webpack.options');
 
 const PATH = {
@@ -114,15 +114,15 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg|gif|svg|woff|woff2)$/,
-        loader: happypackImages,
+        loader: happypackLoaderImages,
       },
       {
         test: /\.css$/,
-        loader: happypackCss,
+        loader: happypackLoaderCss,
       },
       {
         test: /\.scss$/,
-        loader: happypackScss,
+        loader: happypackLoaderScss,
       },
     ],
   },

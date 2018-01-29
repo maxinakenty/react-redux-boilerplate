@@ -6,9 +6,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { browsers, cssModulesHash } = require('./webpack.options');
 const createHappyPackPlugin = require('./helpers/happypack');
 const {
-  happypackImages,
-  happypackCss,
-  happypackScss,
+  happypackLoaderImages,
+  happypackLoaderCss,
+  happypackLoaderScss,
 } = require('./webpack.options');
 
 const PATH = {
@@ -145,20 +145,20 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg|gif|svg|woff|woff2)$/,
-        loader: happypackImages,
+        loader: happypackLoaderImages,
       },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: happypackCss,
+          use: happypackLoaderCss,
         }),
       },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: happypackScss,
+          use: happypackLoaderScss,
         }),
       },
     ],

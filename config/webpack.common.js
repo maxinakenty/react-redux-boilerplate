@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { browsers, cssModulesHash } = require('./webpack.options');
 const createHappyPackPlugin = require('./helpers/happypack');
-const { happypackJs } = require('./webpack.options');
+const { happypackLoaderJs } = require('./webpack.options');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -61,7 +61,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
-        loader: happypackJs,
+        loader: happypackLoaderJs,
       },
     ],
   },
