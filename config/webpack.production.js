@@ -1,8 +1,10 @@
+// const os = require('os');
 const { join } = require('path');
 const webpack = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { browsers, cssModulesHash } = require('./config');
+const { createHappyPackPlugin, extract } = require('./helpers/happypack');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -60,95 +62,100 @@ module.exports = {
       },
       // more options: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
     }),
+    createHappyPackPlugin('images', [
+      {
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[hash:8].[ext]',
+        },
+      },
+    ]),
+    createHappyPackPlugin('css', [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: false,
+          modules: true,
+          importLoaders: 2,
+          localIdentName: cssModulesHash,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: false,
+          config: {
+            path: PATH.postcssConfig,
+            ctx: {
+              autoprefixer: {
+                browsers,
+              },
+              short: {},
+              cssnano: {},
+            },
+          },
+        },
+      },
+      'resolve-url-loader',
+    ]),
+    createHappyPackPlugin('scss', [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: false,
+          modules: true,
+          importLoaders: 2,
+          localIdentName: cssModulesHash,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: false,
+          config: {
+            path: PATH.postcssConfig,
+            ctx: {
+              autoprefixer: {
+                browsers,
+              },
+              short: {},
+              cssnano: {},
+            },
+          },
+        },
+      },
+      'resolve-url-loader',
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: false,
+          modules: true,
+          importLoaders: 2,
+          localIdentName: cssModulesHash,
+        },
+      },
+    ]),
   ],
   module: {
     rules: [
       {
         test: /\.(png|jpg|gif|svg|woff|woff2)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'images/[name].[hash:8].[ext]',
-            },
-          },
-        ],
+        loader: 'happypack/loader?id=images',
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
+        loader: extract({
           fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-                modules: true,
-                importLoaders: 2,
-                localIdentName: cssModulesHash,
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: false,
-                config: {
-                  path: PATH.postcssConfig,
-                  ctx: {
-                    autoprefixer: {
-                      browsers,
-                    },
-                    short: {},
-                    cssnano: {},
-                  },
-                },
-              },
-            },
-            'resolve-url-loader',
-          ],
+          use: 'happypack/loader?id=css',
         }),
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
+        loader: extract({
           fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-                modules: true,
-                importLoaders: 2,
-                localIdentName: cssModulesHash,
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: false,
-                config: {
-                  path: PATH.postcssConfig,
-                  ctx: {
-                    autoprefixer: {
-                      browsers,
-                    },
-                    short: {},
-                    cssnano: {},
-                  },
-                },
-              },
-            },
-            'resolve-url-loader',
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: false,
-                modules: true,
-                importLoaders: 2,
-                localIdentName: cssModulesHash,
-              },
-            },
-          ],
+          use: 'happypack/loader?id=scss',
         }),
       },
     ],
