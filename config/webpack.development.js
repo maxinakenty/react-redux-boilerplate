@@ -1,7 +1,6 @@
 const { join } = require('path');
 const webpack = require('webpack');
 const { browsers, cssModulesHash } = require('./config');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATH = {
   postcssConfig: join(__dirname, 'postcss.config.js'),
