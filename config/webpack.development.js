@@ -1,7 +1,12 @@
 const { join } = require('path');
 const webpack = require('webpack');
-const { browsers, cssModulesHash } = require('./config');
+const { browsers, cssModulesHash } = require('./webpack.options');
 const createHappyPackPlugin = require('./helpers/happypack');
+const {
+  happypackImages,
+  happypackCss,
+  happypackScss,
+} = require('./webpack.options');
 
 const PATH = {
   postcssConfig: join(__dirname, 'postcss.config.js'),
@@ -109,15 +114,15 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg|gif|svg|woff|woff2)$/,
-        loader: 'happypack/loader?id=images',
+        loader: happypackImages,
       },
       {
         test: /\.css$/,
-        loader: 'happypack/loader?id=css',
+        loader: happypackCss,
       },
       {
         test: /\.scss$/,
-        loader: 'happypack/loader?id=scss',
+        loader: happypackScss,
       },
     ],
   },

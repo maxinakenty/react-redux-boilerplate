@@ -3,8 +3,13 @@ const { join } = require('path');
 const webpack = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const { browsers, cssModulesHash } = require('./config');
+const { browsers, cssModulesHash } = require('./webpack.options');
 const createHappyPackPlugin = require('./helpers/happypack');
+const {
+  happypackImages,
+  happypackCss,
+  happypackScss,
+} = require('./webpack.options');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -140,20 +145,20 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg|gif|svg|woff|woff2)$/,
-        loader: 'happypack/loader?id=images',
+        loader: happypackImages,
       },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'happypack/loader?id=css',
+          use: happypackCss,
         }),
       },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'happypack/loader?id=scss',
+          use: happypackScss,
         }),
       },
     ],

@@ -1,14 +1,9 @@
-const os = require('os');
 const { join } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HappyPack = require('happypack');
-const { browsers, cssModulesHash } = require('./config');
-
-const maxThreads = os.cpus().length - 1;
-const happyThreadPool = HappyPack.ThreadPool({
-  size: maxThreads,
-});
+const { browsers, cssModulesHash } = require('./webpack.options');
+const createHappyPackPlugin = require('./helpers/happypack');
+const { happypackJs } = require('./webpack.options');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -28,49 +23,45 @@ module.exports = {
       template: `${PATH.src}/index.html`,
       filename: 'index.html',
     }),
-    new HappyPack({
-      id: 'js',
-      threadPool: happyThreadPool,
-      loaders: [
-        {
-          loader: 'babel-loader',
-          query: {
-            presets: [
-              [
-                'env',
-                {
-                  targets: browsers,
-                },
-              ],
-              'stage-0',
-              'react',
+    createHappyPackPlugin('js', [
+      {
+        loader: 'babel-loader',
+        query: {
+          presets: [
+            [
+              'env',
+              {
+                targets: browsers,
+              },
             ],
-            plugins: [
-              'react-hot-loader/babel',
-              [
-                'react-css-modules',
-                {
-                  generateScopedName: cssModulesHash,
-                  filetypes: {
-                    '.scss': {
-                      syntax: 'postcss-scss',
-                    },
+            'stage-0',
+            'react',
+          ],
+          plugins: [
+            'react-hot-loader/babel',
+            [
+              'react-css-modules',
+              {
+                generateScopedName: cssModulesHash,
+                filetypes: {
+                  '.scss': {
+                    syntax: 'postcss-scss',
                   },
-                  webpackHotModuleReloading: true,
                 },
-              ],
+                webpackHotModuleReloading: true,
+              },
             ],
-          },
+          ],
         },
-      ],
-    }),
+      },
+    ]),
   ],
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
-        loader: 'happypack/loader?id=js',
+        loader: happypackJs,
       },
     ],
   },

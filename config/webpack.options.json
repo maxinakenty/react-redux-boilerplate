@@ -1,0 +1,9 @@
+{
+  "browsers": ["last 2 version", "> 5%"],
+  "cssModulesHash": "[local]__[hash:base64:8]",
+
+  "happypackJs": "happypack/loader?id=js",
+  "happypackImages": "happypack/loader?id=images",
+  "happypackCss": "happypack/loader?id=css",
+  "happypackScss": "happypack/loader?id=scss"
+}
