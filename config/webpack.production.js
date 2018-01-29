@@ -71,11 +71,10 @@ module.exports = {
       },
     ]),
     createHappyPackPlugin('css', [
-      'style-loader',
       {
         loader: 'css-loader',
         options: {
-          sourceMap: false,
+          sourceMap: true,
           modules: true,
           importLoaders: 2,
           localIdentName: cssModulesHash,
@@ -84,7 +83,7 @@ module.exports = {
       {
         loader: 'postcss-loader',
         options: {
-          sourceMap: false,
+          sourceMap: true,
           config: {
             path: PATH.postcssConfig,
             ctx: {
@@ -100,7 +99,6 @@ module.exports = {
       'resolve-url-loader',
     ]),
     createHappyPackPlugin('scss', [
-      'style-loader',
       {
         loader: 'css-loader',
         options: {

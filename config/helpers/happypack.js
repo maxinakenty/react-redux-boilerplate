@@ -16,7 +16,10 @@ const createHappyPackPlugin = (id, loaders) =>
   });
 
 const extract = options =>
-  ExtractTextPlugin.extract(options.fallback, options.use);
+  ExtractTextPlugin.extract({
+    fallback: options.fallback,
+    use: options.use,
+  });
 
 module.exports = {
   extract,
