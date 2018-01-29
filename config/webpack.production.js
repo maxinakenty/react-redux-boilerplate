@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { browsers, cssModulesHash } = require('./config');
-const { createHappyPackPlugin, extract } = require('./helpers/happypack');
+const createHappyPackPlugin = require('./helpers/happypack');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -144,14 +144,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: extract({
+        loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'happypack/loader?id=css',
         }),
       },
       {
         test: /\.scss$/,
-        loader: extract({
+        loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'happypack/loader?id=scss',
         }),

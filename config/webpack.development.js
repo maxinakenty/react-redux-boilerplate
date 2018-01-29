@@ -1,7 +1,7 @@
 const { join } = require('path');
 const webpack = require('webpack');
 const { browsers, cssModulesHash } = require('./config');
-const { createHappyPackPlugin } = require('./helpers/happypack');
+const createHappyPackPlugin = require('./helpers/happypack');
 
 const PATH = {
   postcssConfig: join(__dirname, 'postcss.config.js'),
