@@ -16,6 +16,7 @@ module.exports = {
   output: {
     publicPath: '/',
     filename: '[name].js',
+    chunkFilename: '[name].js',
   },
   devtool: 'eval',
   watch: true,

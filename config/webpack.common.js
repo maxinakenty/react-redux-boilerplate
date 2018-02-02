@@ -22,6 +22,11 @@ module.exports = {
       title: 'Index',
       template: `${PATH.src}/index.html`,
       filename: 'index.html',
+      chunks: ['common', 'bundle'],
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      minChunks: 2,
     }),
     createHappyPackPlugin('js', [
       {

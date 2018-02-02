@@ -22,6 +22,7 @@ module.exports = {
     path: PATH.dist,
     publicPath: '/',
     filename: 'js/[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
   },
   watch: false,
   devtool: false,
@@ -33,7 +34,7 @@ module.exports = {
       filename: 'assets.json',
       path: PATH.dist,
     }),
-    new ExtractTextPlugin('css/[contenthash].css', {
+    new ExtractTextPlugin('css/common.[contenthash].css', {
       allChunks: true,
     }),
     new webpack.optimize.UglifyJsPlugin({
