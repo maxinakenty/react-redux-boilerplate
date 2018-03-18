@@ -1,16 +1,26 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import App from './components/App';
 import TodoApp from './reducers/';
 import './index.scss';
-/* eslint-disable no-underscore-dangle */
+
+// React the documentation:
+// https://github.com/zalmoxisus/redux-devtools-extension#14-using-in-production
+const composeEnhancers = composeWithDevTools({
+  // options like actionSanitizer, stateSanitizer
+});
+
 const store = createStore(
   TodoApp,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  /* preloadedState, */ composeEnhancers(
+    // applyMiddleware(...your middleware)
+    applyMiddleware(),
+    // other store enhancers if any
+  ),
 );
-/* eslint-enable */
 
 render(
   <Provider store={store}>
