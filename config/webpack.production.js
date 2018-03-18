@@ -3,7 +3,7 @@ const { join } = require('path');
 const webpack = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const { browsers, cssModulesHash } = require('./webpack.options');
+const { cssModulesHash } = require('./webpack.options');
 const createHappyPackPlugin = require('./helpers/happypack');
 const {
   happypackLoaderImages,
@@ -86,23 +86,16 @@ module.exports = {
           localIdentName: cssModulesHash,
         },
       },
+      'resolve-url-loader',
       {
         loader: 'postcss-loader',
         options: {
           sourceMap: true,
           config: {
             path: PATH.postcssConfig,
-            ctx: {
-              autoprefixer: {
-                browsers,
-              },
-              short: {},
-              cssnano: {},
-            },
           },
         },
       },
-      'resolve-url-loader',
     ]),
     createHappyPackPlugin('scss', [
       {
@@ -114,23 +107,16 @@ module.exports = {
           localIdentName: cssModulesHash,
         },
       },
+      'resolve-url-loader',
       {
         loader: 'postcss-loader',
         options: {
           sourceMap: false,
           config: {
             path: PATH.postcssConfig,
-            ctx: {
-              autoprefixer: {
-                browsers,
-              },
-              short: {},
-              cssnano: {},
-            },
           },
         },
       },
-      'resolve-url-loader',
       {
         loader: 'sass-loader',
         options: {
