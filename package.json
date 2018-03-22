@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --watch ./config ./node_modules/.bin/webpack-dev-server",
-    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
-    "demo": "static -a 0.0.0.0 dist",
-    "clean": "rimraf dist",
-    "unit:watch": "jest --watch"
+    "start": "cross-env nodemon --watch ./config ./node_modules/.bin/webpack-dev-server",
+    "build": "cross-env clean && cross-env NODE_ENV=production webpack -p && cross-env demo",
+    "demo": "cross-env static -a 0.0.0.0 dist",
+    "clean": "cross-env rimraf dist",
+    "unit:watch": "cross-env jest --watch"
   },
   "jest": {
     "collectCoverage": true
@@ -28,7 +28,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "cross-env": "^5.1.3",
+    "cross-env": "^5.1.4",
     "css-loader": "^0.28.9",
     "cssnano": "^3.10.0",
     "eslint-config-prettier": "^2.9.0",
