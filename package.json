@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "cross-env nodemon --watch ./config ./node_modules/.bin/webpack-dev-server",
-    "build": "cross-env clean && cross-env NODE_ENV=production webpack -p && cross-env demo",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
     "demo": "cross-env static -a 0.0.0.0 dist",
     "clean": "cross-env rimraf dist",
     "unit:watch": "cross-env jest --watch"
