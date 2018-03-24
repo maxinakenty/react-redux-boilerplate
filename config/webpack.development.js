@@ -29,6 +29,7 @@ module.exports = {
     stats: {
       'errors-only': true,
     },
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.DefinePlugin({
