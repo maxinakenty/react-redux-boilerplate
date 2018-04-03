@@ -1,16 +1,25 @@
 import React from 'react';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { hot } from 'react-hot-loader';
 import App from '../components/App';
 import rootReducer from '../reducers/';
 
-/* eslint-disable no-underscore-dangle */
+// React the documentation:
+// https://github.com/zalmoxisus/redux-devtools-extension#14-using-in-production
+const composeEnhancers = composeWithDevTools({
+  // options like actionSanitizer, stateSanitizer
+});
+
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  /* preloadedState, */ composeEnhancers(
+    // applyMiddleware(...your middleware)
+    applyMiddleware(),
+    // other store enhancers if any
+  ),
 );
-/* eslint-enable */
 
 const Root = () => (
   <Provider store={store}>
