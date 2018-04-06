@@ -1,7 +1,5 @@
 @import '~accoutrement-init/sass/init';
 
-:global {
-  body {
-    background-color: rgba(173, 216, 230, 0.164);
-  }
-}
+@import './styles/vars';
+@import './styles/toggle-button';
+@import './styles/vertical-rhythm';
