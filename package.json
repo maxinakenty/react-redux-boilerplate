@@ -4,19 +4,26 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start":
-      "cross-env nodemon --watch ./config ./node_modules/.bin/webpack-dev-server",
-    "build":
-      "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
+    "start": "cross-env nodemon --watch ./config ./node_modules/.bin/webpack-dev-server",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
     "demo": "cross-env static -a 0.0.0.0 dist",
     "clean": "cross-env rimraf dist",
     "unit:watch": "cross-env jest --watch"
   },
   "jest": {
     "collectCoverage": true,
-    "transform": { "^.+\\.js$": "./node_modules/babel-jest" },
-    "testFileExtensions": ["es6", "js"],
-    "moduleFileExtensions": ["js", "json", "es6"]
+    "transform": {
+      "^.+\\.js$": "./node_modules/babel-jest"
+    },
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ]
   },
   "dependencies": {
     "accoutrement-color": "^2.2.2",
@@ -33,6 +40,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "classnames": "^2.2.5",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.9",
     "cssnano": "^3.10.0",

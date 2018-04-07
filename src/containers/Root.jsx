@@ -3,9 +3,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { hot } from 'react-hot-loader';
-import rootReducer from '../reducer';
-import Typographist from '../containers/Typographist';
-import RhythmToggle from '../containers/RhythmToggleButton';
+import rootReducer from '../reducers';
+import App from '../components/App';
 
 const store = createStore(
   rootReducer,
@@ -18,9 +17,7 @@ const store = createStore(
 
 const Root = () => (
   <Provider store={store}>
-    <Typographist className="test">
-      <RhythmToggle />
-    </Typographist>
+    <App />
   </Provider>
 );
 
