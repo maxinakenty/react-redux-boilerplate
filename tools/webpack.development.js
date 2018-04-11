@@ -1,6 +1,6 @@
 const { join } = require('path');
 const webpack = require('webpack');
-const { cssModulesHash } = require('./webpack.options');
+const { cssModulesHash } = require('../package.json');
 const createHappyPackPlugin = require('./helpers/happypack');
 const {
   happypackLoaderImages,

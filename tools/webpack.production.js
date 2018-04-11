@@ -3,7 +3,7 @@ const { join } = require('path');
 const webpack = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const { cssModulesHash } = require('./webpack.options');
+const { cssModulesHash } = require('../package.json');
 const createHappyPackPlugin = require('./helpers/happypack');
 const {
   happypackLoaderImages,

@@ -1,6 +1,4 @@
 {
-  "cssModulesHash": "[local]__[hash:base64:8]",
-
   "happypackLoaderJs": "happypack/loader?id=js",
   "happypackLoaderImages": "happypack/loader?id=images",
   "happypackLoaderCss": "happypack/loader?id=css",

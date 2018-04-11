@@ -13,6 +13,7 @@
     "unit:watch": "cross-env jest --watch"
   },
   "browserslist": ["last 2 version", "> 5%"],
+  "cssModulesHash": "[local]__[hash:base64:8]",
   "jest": {
     "collectCoverage": true,
     "transform": {
