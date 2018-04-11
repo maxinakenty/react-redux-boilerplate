@@ -1,7 +1,7 @@
 const { join } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { browsers, cssModulesHash } = require('./webpack.options');
+const { cssModulesHash } = require('./webpack.options');
 const createHappyPackPlugin = require('./helpers/happypack');
 const { happypackLoaderJs } = require('./webpack.options');
 
@@ -32,16 +32,7 @@ module.exports = {
       {
         loader: 'babel-loader',
         query: {
-          presets: [
-            [
-              'env',
-              {
-                targets: browsers,
-              },
-            ],
-            'stage-0',
-            'react',
-          ],
+          presets: ['env', 'stage-0', 'react'],
           plugins: [
             'react-hot-loader/babel',
             [
