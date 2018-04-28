@@ -34,6 +34,7 @@ module.exports = {
         query: {
           presets: ['env', 'stage-0', 'react'],
           plugins: [
+            'transform-decorators-legacy',
             'react-hot-loader/babel',
             [
               'react-css-modules',
