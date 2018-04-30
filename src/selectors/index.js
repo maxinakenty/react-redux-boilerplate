@@ -3,8 +3,8 @@ import { VisibilityFilters } from '../constants/ActionTypes';
 
 const { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } = VisibilityFilters;
 
-const getVisibilityFilter = state => state.visibilityFilter;
-const getTodos = state => state.todos;
+const getVisibilityFilter = state => state.get('visibilityFilter');
+const getTodos = state => state.get('todos').toJS();
 
 export default createSelector(
   [getVisibilityFilter, getTodos],
