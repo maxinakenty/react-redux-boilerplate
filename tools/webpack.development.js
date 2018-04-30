@@ -24,6 +24,7 @@ module.exports = {
     aggregateTimeout: 100,
   },
   devServer: {
+    overlay: true,
     port: 3000,
     hot: true,
     stats: {
