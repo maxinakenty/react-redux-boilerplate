@@ -1,31 +1,26 @@
-import { ADD_TODO, TOGGLE_TODO } from '../constants/ActionTypes';
+import { handleActions } from 'redux-actions';
+import { addTodo, toggleTodo } from '../actionCreators';
 
 let nextTodoId = 0;
-const todos = (state = [], action) => {
-  switch (action.type) {
-    case ADD_TODO:
-      return [
-        ...state,
-        {
-          id: nextTodoId++,
-          completed: false,
-          text: action.text,
-        },
-      ];
-
-    case TOGGLE_TODO:
-      return state.map(todo => {
-        if (action.id === todo.id) {
+const todos = handleActions(
+  {
+    [addTodo]: (state, action) => [
+      ...state,
+      { id: nextTodoId++, completed: false, text: action.payload.text },
+    ],
+    [toggleTodo]: (state, action) =>
+      state.map(todo => {
+        if (action.payload.id === todo.id) {
           return {
             ...todo,
             completed: !todo.completed,
           };
         }
+
         return todo;
-      });
-    default:
-      return state;
-  }
-};
+      }),
+  },
+  [],
+);
 
 export default todos;

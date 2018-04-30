@@ -1,2 +1,11 @@
 @import '~accoutrement-init/sass/init';
 @import './styles/typography';
+
+:global {
+  .todo a {
+    color: #666;
+  }
+  .todo_completed {
+    text-decoration: line-through;
+  }
+}

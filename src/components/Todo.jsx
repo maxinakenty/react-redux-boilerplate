@@ -4,10 +4,13 @@ import classNames from 'classnames';
 
 const Todo = ({ onClick, completed, text }) => (
   <li className={classNames('todo', { todo_completed: completed })}>
-    <a href="*" onClick={e => {
+    <a
+      href="*"
+      onClick={e => {
         e.preventDefault();
         onClick();
-      }}>
+      }}
+    >
       {text}
     </a>
   </li>
