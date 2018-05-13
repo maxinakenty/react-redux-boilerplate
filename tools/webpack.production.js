@@ -1,41 +1,41 @@
 // const os = require('os');
-const { join } = require('path');
-const webpack = require('webpack');
-const AssetsWebpackPlugin = require('assets-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const { cssModulesHash } = require('../package.json');
-const createHappyPackPlugin = require('./helpers/happypack');
+const { join } = require("path");
+const webpack = require("webpack");
+const AssetsWebpackPlugin = require("assets-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const { cssModulesHash } = require("../package.json");
+const createHappyPackPlugin = require("./helpers/happypack");
 const {
   happypackLoaderImages,
   happypackLoaderCss,
-  happypackLoaderScss,
-} = require('./webpack.options');
+  happypackLoaderScss
+} = require("./webpack.options");
 
 const PATH = {
-  src: join(__dirname, '..', 'src'),
-  dist: join(__dirname, '..', 'dist'),
-  postcssConfig: join(__dirname, 'postcss.config.js'),
+  src: join(__dirname, "..", "src"),
+  public: join(__dirname, "..", "public"),
+  postcssConfig: join(__dirname, "postcss.config.js")
 };
 
 module.exports = {
   output: {
-    path: PATH.dist,
-    publicPath: '/',
-    filename: 'js/[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js',
+    path: PATH.public,
+    publicPath: "/",
+    filename: "js/[name].[chunkhash].js",
+    chunkFilename: "[name].[chunkhash].js"
   },
   watch: false,
   devtool: false,
   plugins: [
     new webpack.DefinePlugin({
-      NODE_ENV: JSON.stringify('production'),
+      NODE_ENV: JSON.stringify("production")
     }),
     new AssetsWebpackPlugin({
-      filename: 'assets.json',
-      path: PATH.dist,
+      filename: "assets.json",
+      path: PATH.public
     }),
-    new ExtractTextPlugin('css/common.[contenthash].css', {
-      allChunks: true,
+    new ExtractTextPlugin("css/common.[contenthash].css", {
+      allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({
       // more info: http://lisperator.net/uglifyjs/compress
@@ -59,98 +59,98 @@ module.exports = {
         side_effects: true, // drop side-effect-free statements
         warnings: false, // warn about potentially dangerous optimizations/code
         global_defs: {
-          __REACT_HOT_LOADER__: undefined, // eslint-disable-line no-undefined
-        },
+          __REACT_HOT_LOADER__: undefined // eslint-disable-line no-undefined
+        }
       },
       sourceMap: false,
       output: {
-        comments: false,
-      },
+        comments: false
+      }
       // more options: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
     }),
-    createHappyPackPlugin('images', [
+    createHappyPackPlugin("images", [
       {
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: 'images/[name].[hash:8].[ext]',
-        },
-      },
+          name: "images/[name].[hash:8].[ext]"
+        }
+      }
     ]),
-    createHappyPackPlugin('css', [
+    createHappyPackPlugin("css", [
       {
-        loader: 'css-loader',
+        loader: "css-loader",
         options: {
           sourceMap: true,
           modules: true,
           importLoaders: 2,
           localIdentName: cssModulesHash,
-          minimize: true,
-        },
+          minimize: true
+        }
       },
-      'resolve-url-loader',
+      "resolve-url-loader",
       {
-        loader: 'postcss-loader',
+        loader: "postcss-loader",
         options: {
           sourceMap: true,
           config: {
-            path: PATH.postcssConfig,
-          },
-        },
-      },
+            path: PATH.postcssConfig
+          }
+        }
+      }
     ]),
-    createHappyPackPlugin('scss', [
+    createHappyPackPlugin("scss", [
       {
-        loader: 'css-loader',
+        loader: "css-loader",
         options: {
           sourceMap: false,
           modules: true,
           importLoaders: 2,
           localIdentName: cssModulesHash,
-          minimize: true,
-        },
+          minimize: true
+        }
       },
-      'resolve-url-loader',
+      "resolve-url-loader",
       {
-        loader: 'postcss-loader',
+        loader: "postcss-loader",
         options: {
           sourceMap: false,
           config: {
-            path: PATH.postcssConfig,
-          },
-        },
+            path: PATH.postcssConfig
+          }
+        }
       },
       {
-        loader: 'sass-loader',
+        loader: "sass-loader",
         options: {
           sourceMap: false,
           modules: true,
           importLoaders: 2,
           localIdentName: cssModulesHash,
-          minimize: true,
-        },
-      },
-    ]),
+          minimize: true
+        }
+      }
+    ])
   ],
   module: {
     rules: [
       {
         test: /\.(png|jpg|gif|svg|woff|woff2)$/,
-        loader: happypackLoaderImages,
+        loader: happypackLoaderImages
       },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: happypackLoaderCss,
-        }),
+          fallback: "style-loader",
+          use: happypackLoaderCss
+        })
       },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: happypackLoaderScss,
-        }),
-      },
-    ],
-  },
+          fallback: "style-loader",
+          use: happypackLoaderScss
+        })
+      }
+    ]
+  }
 };

@@ -4,31 +4,23 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env nodemon --watch ./tools ./node_modules/.bin/webpack-dev-server",
-    "build": "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
-    "demo": "cross-env static -a 0.0.0.0 dist",
-    "clean": "cross-env rimraf dist",
+    "start":
+      "cross-env nodemon --watch ./tools ./node_modules/.bin/webpack-dev-server",
+    "build":
+      "npm run clean && cross-env NODE_ENV=production webpack -p && npm run demo",
+    "demo": "cross-env static -a 0.0.0.0 public",
+    "clean": "cross-env rimraf public",
     "unit:watch": "cross-env jest --watch"
   },
-  "browserslist": [
-    "last 2 version",
-    "> 5%"
-  ],
+  "browserslist": ["last 2 version", "> 5%"],
   "cssModulesHash": "[local]__[hash:base64:8]",
   "jest": {
     "collectCoverage": false,
     "transform": {
       "^.+\\.js$": "./node_modules/babel-jest"
     },
-    "testFileExtensions": [
-      "es6",
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "es6"
-    ]
+    "testFileExtensions": ["es6", "js"],
+    "moduleFileExtensions": ["js", "json", "es6"]
   },
   "dependencies": {
     "accoutrement-init": "^1.1.2",

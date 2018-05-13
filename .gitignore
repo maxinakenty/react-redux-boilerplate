@@ -4,7 +4,7 @@
 node_modules/
 
 # Compiled output
-dist
+public
 
 # Test coverage
 coverage
