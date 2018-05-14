@@ -1,0 +1,1 @@
+cross-env eslint --fix src

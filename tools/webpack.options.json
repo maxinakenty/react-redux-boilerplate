@@ -1,6 +1,0 @@
-{
-  "happypackLoaderJs": "happypack/loader?id=js",
-  "happypackLoaderImages": "happypack/loader?id=images",
-  "happypackLoaderCss": "happypack/loader?id=css",
-  "happypackLoaderScss": "happypack/loader?id=scss"
-}
