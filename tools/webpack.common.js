@@ -2,8 +2,7 @@ const { join } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { cssModulesHash } = require('../package.json');
-const createHappyPackPlugin = require('./helpers/happypack');
-const { happypackLoaderJs } = require('./webpack.options');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -18,47 +17,42 @@ module.exports = {
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
+    new FriendlyErrorsWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Index',
       template: `${PATH.src}/index.html`,
       filename: 'index.html',
-      chunks: ['common', 'bundle'],
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-      minChunks: 2,
-    }),
-    createHappyPackPlugin('js', [
-      {
-        loader: 'babel-loader',
-        query: {
-          presets: ['env', 'stage-0', 'react'],
-          plugins: [
-            'transform-decorators-legacy',
-            'react-hot-loader/babel',
-            [
-              'react-css-modules',
-              {
-                generateScopedName: cssModulesHash,
-                filetypes: {
-                  '.scss': {
-                    syntax: 'postcss-scss',
-                  },
-                },
-                webpackHotModuleReloading: true,
-              },
-            ],
-          ],
-        },
-      },
-    ]),
   ],
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
-        loader: happypackLoaderJs,
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['env', 'stage-0', 'react'],
+              plugins: [
+                'transform-decorators-legacy',
+                'react-hot-loader/babel',
+                [
+                  'react-css-modules',
+                  {
+                    generateScopedName: cssModulesHash,
+                    filetypes: {
+                      '.scss': {
+                        syntax: 'postcss-scss',
+                      },
+                    },
+                    webpackHotModuleReloading: true,
+                  },
+                ],
+              ],
+            },
+          },
+        ],
       },
     ],
   },

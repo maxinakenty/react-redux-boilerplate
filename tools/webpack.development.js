@@ -1,12 +1,6 @@
 const { join } = require('path');
 const webpack = require('webpack');
 const { cssModulesHash } = require('../package.json');
-const createHappyPackPlugin = require('./helpers/happypack');
-const {
-  happypackLoaderImages,
-  happypackLoaderCss,
-  happypackLoaderScss,
-} = require('./webpack.options');
 
 const PATH = {
   postcssConfig: join(__dirname, 'postcss.config.js'),
@@ -37,84 +31,81 @@ module.exports = {
       NODE_ENV: JSON.stringify('development'),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    createHappyPackPlugin('images', [
-      {
-        loader: 'file-loader',
-        options: {
-          name: 'images/[name].[ext]',
-        },
-      },
-    ]),
-    createHappyPackPlugin('css', [
-      'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
-          modules: true,
-          importLoaders: 2,
-          localIdentName: cssModulesHash,
-          minimize: false,
-        },
-      },
-      'resolve-url-loader',
-      {
-        loader: 'postcss-loader',
-        options: {
-          sourceMap: true,
-          config: {
-            path: PATH.postcssConfig,
-          },
-        },
-      },
-    ]),
-    createHappyPackPlugin('scss', [
-      'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
-          modules: true,
-          importLoaders: 2,
-          localIdentName: cssModulesHash,
-          minimize: false,
-        },
-      },
-      'resolve-url-loader',
-      {
-        loader: 'postcss-loader',
-        options: {
-          sourceMap: true,
-          config: {
-            path: PATH.postcssConfig,
-          },
-        },
-      },
-      {
-        loader: 'sass-loader',
-        options: {
-          sourceMap: true,
-          modules: true,
-          importLoaders: 2,
-          localIdentName: cssModulesHash,
-          minimize: false,
-        },
-      },
-    ]),
   ],
   module: {
     rules: [
       {
         test: /\.(png|jpg|gif|svg|woff|woff2)$/,
-        loader: happypackLoaderImages,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]',
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
-        loader: happypackLoaderCss,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: cssModulesHash,
+              minimize: false,
+            },
+          },
+          'resolve-url-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: PATH.postcssConfig,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
-        loader: happypackLoaderScss,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: cssModulesHash,
+              minimize: false,
+            },
+          },
+          'resolve-url-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: PATH.postcssConfig,
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: cssModulesHash,
+              minimize: false,
+            },
+          },
+        ],
       },
     ],
   },
