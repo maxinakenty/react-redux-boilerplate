@@ -1,1 +1,1 @@
-cross-env nodemon --exec 'yarn tools:watch && yarn lint'
+cross-env nodemon --exec 'yarn tools:watch'
