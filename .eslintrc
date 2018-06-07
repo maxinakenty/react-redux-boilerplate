@@ -12,6 +12,7 @@
     "jasmine": true
   },
   "rules": {
-    "import/no-extraneous-dependencies": false
+    "import/no-extraneous-dependencies": false,
+    "react/jsx-filename-extension": false
   }
 }

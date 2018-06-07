@@ -8,9 +8,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import App from './components/App';
 import rootReducer from './reducers';
+import IS_DEVELOPMENT from '../tools/constants';
 
-const IS_DEVELOPMENT =
-  !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 const history = createBrowserHistory();
 const middleware = routerMiddleware(history);
 

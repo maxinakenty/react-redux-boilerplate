@@ -15,21 +15,6 @@
     "> 5%"
   ],
   "cssModulesHash": "[local]__[hash:base64:8]",
-  "jest": {
-    "collectCoverage": false,
-    "transform": {
-      "^.+\\.js$": "./node_modules/babel-jest"
-    },
-    "testFileExtensions": [
-      "es6",
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "es6"
-    ]
-  },
   "dependencies": {
     "accoutrement-init": "^1.1.2",
     "classnames": "^2.2.5",
