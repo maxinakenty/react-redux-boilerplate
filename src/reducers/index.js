@@ -1,10 +1,5 @@
-import { combineReducers } from 'redux-immutablejs';
-import todos from './todos';
-import visibilityFilter from './visibilityFilter';
+import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({
-  todos,
-  visibilityFilter,
-});
+const rootReducer = combineReducers({});
 
 export default rootReducer;

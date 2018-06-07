@@ -1,1 +1,1 @@
-cross-env nodemon --exec 'yarn tools:watch'
+cross-env nodemon --watch tools node_modules/.bin/webpack-dev-server

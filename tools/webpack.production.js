@@ -12,6 +12,7 @@ const PATH = {
 };
 
 module.exports = {
+  mode: 'production',
   output: {
     path: PATH.public,
     publicPath: '/',

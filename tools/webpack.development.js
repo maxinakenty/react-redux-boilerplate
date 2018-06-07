@@ -7,6 +7,7 @@ const PATH = {
 };
 
 module.exports = {
+  mode: 'development',
   output: {
     publicPath: '/',
     filename: '[name].js',

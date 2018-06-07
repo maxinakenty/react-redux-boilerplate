@@ -1,13 +1,8 @@
 import React, { Fragment } from 'react';
-import AddTodo from '../containers/AddTodo';
-import VisibleTodoList from '../containers/VisibleTodoList';
-import Footer from '../components/Footer';
 
 const App = () => (
   <Fragment>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
+    <h1>Hi Man!</h1>
   </Fragment>
 );
 

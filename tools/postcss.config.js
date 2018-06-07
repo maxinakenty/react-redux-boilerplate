@@ -5,5 +5,5 @@ const customSelectors = require('postcss-custom-selectors');
 const selectorNot = require('postcss-selector-not');
 
 module.exports = () => ({
-  plugins: [autoprefixer(), short, flexbugs, customSelectors, selectorNot],
+  plugins: [autoprefixer, short, flexbugs, customSelectors, selectorNot],
 });

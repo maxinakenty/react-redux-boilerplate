@@ -10,7 +10,7 @@ const PATH = {
 
 module.exports = {
   entry: {
-    bundle: ['babel-polyfill', `${PATH.src}/index`],
+    bundle: `${PATH.src}/index`,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
@@ -27,8 +27,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg|gif|svg|woff|woff2)$/,
+        use: 'url-loader',
+      },
+      {
         test: /\.jsx?$/,
-        exclude: [/node_modules/],
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
