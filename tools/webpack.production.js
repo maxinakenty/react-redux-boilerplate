@@ -56,7 +56,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
+              sourceMap: false,
               modules: true,
               importLoaders: 2,
               localIdentName: cssModulesHash,
