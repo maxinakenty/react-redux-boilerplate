@@ -1,4 +1,3 @@
-// const os = require('os');
 const { join } = require('path');
 const webpack = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
