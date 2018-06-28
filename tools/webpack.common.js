@@ -1,11 +1,6 @@
-const { join } = require('path');
 const { NoEmitOnErrorsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { cssModulesHash } = require('../package.json');
-
-const PATH = {
-  src: join(__dirname, '..', 'src'),
-};
+const { PATH, CSS_MODULES_HASH } = require('./constants');
 
 module.exports = {
   entry: {
@@ -42,7 +37,7 @@ module.exports = {
                 [
                   'react-css-modules',
                   {
-                    generateScopedName: cssModulesHash,
+                    generateScopedName: CSS_MODULES_HASH,
                     filetypes: {
                       '.scss': {
                         syntax: 'postcss-scss',

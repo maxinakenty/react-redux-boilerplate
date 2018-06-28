@@ -1,8 +1,7 @@
 const { DefinePlugin } = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { cssModulesHash } = require('../package.json');
-const { PATH } = require('./constants');
+const { PATH, CSS_MODULES_HASH } = require('./constants');
 
 module.exports = {
   mode: 'production',
@@ -52,7 +51,7 @@ module.exports = {
               sourceMap: false,
               modules: true,
               importLoaders: 2,
-              localIdentName: cssModulesHash,
+              localIdentName: CSS_MODULES_HASH,
               minimize: true,
             },
           },
@@ -78,7 +77,7 @@ module.exports = {
               sourceMap: false,
               modules: true,
               importLoaders: 2,
-              localIdentName: cssModulesHash,
+              localIdentName: CSS_MODULES_HASH,
               minimize: true,
             },
           },
@@ -98,7 +97,7 @@ module.exports = {
               sourceMap: false,
               modules: true,
               importLoaders: 2,
-              localIdentName: cssModulesHash,
+              localIdentName: CSS_MODULES_HASH,
               minimize: true,
             },
           },

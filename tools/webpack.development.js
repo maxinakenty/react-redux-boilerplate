@@ -1,6 +1,5 @@
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
-const { cssModulesHash } = require('../package.json');
-const { PATH } = require('./constants');
+const { PATH, CSS_MODULES_HASH } = require('./constants');
 
 module.exports = {
   mode: 'development',
@@ -52,7 +51,7 @@ module.exports = {
               sourceMap: true,
               modules: true,
               importLoaders: 2,
-              localIdentName: cssModulesHash,
+              localIdentName: CSS_MODULES_HASH,
             },
           },
           'resolve-url-loader',
@@ -77,7 +76,7 @@ module.exports = {
               sourceMap: true,
               modules: true,
               importLoaders: 2,
-              localIdentName: cssModulesHash,
+              localIdentName: CSS_MODULES_HASH,
             },
           },
           'resolve-url-loader',
@@ -96,7 +95,7 @@ module.exports = {
               sourceMap: true,
               modules: true,
               importLoaders: 2,
-              localIdentName: cssModulesHash,
+              localIdentName: CSS_MODULES_HASH,
             },
           },
         ],

@@ -10,7 +10,6 @@
     "clean": "cross-env rimraf public",
     "unit:watch": "cross-env jest --watch"
   },
-  "cssModulesHash": "[local]__[hash:base64:8]",
   "dependencies": {
     "accoutrement-init": "^1.1.2",
     "classnames": "^2.2.5",
