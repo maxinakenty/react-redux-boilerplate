@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npm run clean && cross-env nodemon --config nodemon.json NODE_ENV=development node_modules/.bin/webpack-dev-server",
+    "start": "npm run clean && cross-env nodemon --watch tools --watch webpack.config.js node_modules/.bin/webpack-dev-server",
     "build": "npm run clean && cross-env NODE_ENV=production webpack",
     "demo": "npm run build && cross-env static -a 0.0.0.0 public",
     "clean": "cross-env rimraf public",

@@ -1,14 +1,8 @@
-const { join } = require('path');
-const webpack = require('webpack');
+const { DefinePlugin } = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
-const { cssModulesHash } = require('../package.json');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const PATH = {
-  src: join(__dirname, '..', 'src'),
-  public: join(__dirname, '..', 'public'),
-  postcssConfig: join(__dirname, 'postcss.config.js'),
-};
+const { cssModulesHash } = require('../package.json');
+const { PATH } = require('./constants');
 
 module.exports = {
   mode: 'production',
@@ -24,7 +18,7 @@ module.exports = {
   watch: false,
   devtool: false,
   plugins: [
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       NODE_ENV: JSON.stringify('production'),
     }),
     new AssetsWebpackPlugin({
@@ -66,7 +60,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true,
+              sourceMap: false,
               config: {
                 path: PATH.postcssConfig,
               },

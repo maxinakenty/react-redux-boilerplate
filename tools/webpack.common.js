@@ -1,8 +1,7 @@
 const { join } = require('path');
-const webpack = require('webpack');
+const { NoEmitOnErrorsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { cssModulesHash } = require('../package.json');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -16,8 +15,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.scss'],
   },
   plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
-    new FriendlyErrorsWebpackPlugin(),
+    new NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Index',
       template: `${PATH.src}/index.html`,

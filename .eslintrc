@@ -12,7 +12,8 @@
     "jasmine": true
   },
   "rules": {
-    "import/no-extraneous-dependencies": false,
-    "react/jsx-filename-extension": false
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0
   }
 }

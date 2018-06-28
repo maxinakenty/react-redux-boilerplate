@@ -1,10 +1,6 @@
-const { join } = require('path');
-const webpack = require('webpack');
+const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 const { cssModulesHash } = require('../package.json');
-
-const PATH = {
-  postcssConfig: join(__dirname, 'postcss.config.js'),
-};
+const { PATH } = require('./constants');
 
 module.exports = {
   mode: 'development',
@@ -28,10 +24,10 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       NODE_ENV: JSON.stringify('development'),
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    new HotModuleReplacementPlugin(),
   ],
   module: {
     rules: [
@@ -57,7 +53,6 @@ module.exports = {
               modules: true,
               importLoaders: 2,
               localIdentName: cssModulesHash,
-              minimize: false,
             },
           },
           'resolve-url-loader',
@@ -83,7 +78,6 @@ module.exports = {
               modules: true,
               importLoaders: 2,
               localIdentName: cssModulesHash,
-              minimize: false,
             },
           },
           'resolve-url-loader',
@@ -103,7 +97,6 @@ module.exports = {
               modules: true,
               importLoaders: 2,
               localIdentName: cssModulesHash,
-              minimize: false,
             },
           },
         ],
