@@ -1,7 +1,6 @@
 const { join } = require('path');
 const { NoEmitOnErrorsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { cssModulesHash } = require('../package.json');
 
 const PATH = {
   src: join(__dirname, '..', 'src'),
@@ -31,30 +30,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            query: {
-              presets: ['env', 'stage-0', 'react'],
-              plugins: [
-                'transform-decorators-legacy',
-                'react-hot-loader/babel',
-                [
-                  'react-css-modules',
-                  {
-                    generateScopedName: cssModulesHash,
-                    filetypes: {
-                      '.scss': {
-                        syntax: 'postcss-scss',
-                      },
-                    },
-                    webpackHotModuleReloading: true,
-                  },
-                ],
-              ],
-            },
-          },
-        ],
+        use: 'babel-loader',
       },
     ],
   },

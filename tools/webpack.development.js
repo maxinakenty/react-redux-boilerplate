@@ -1,5 +1,4 @@
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
-const { cssModulesHash } = require('../package.json');
 const { PATH } = require('./constants');
 
 module.exports = {
@@ -50,9 +49,6 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              importLoaders: 2,
-              localIdentName: cssModulesHash,
             },
           },
           'resolve-url-loader',
@@ -75,9 +71,6 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              importLoaders: 2,
-              localIdentName: cssModulesHash,
             },
           },
           'resolve-url-loader',
@@ -94,9 +87,6 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              importLoaders: 2,
-              localIdentName: cssModulesHash,
             },
           },
         ],
