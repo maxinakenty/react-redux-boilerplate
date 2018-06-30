@@ -1,4 +1,5 @@
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const { PATH } = require('./constants');
 
 module.exports = {
@@ -27,6 +28,27 @@ module.exports = {
       NODE_ENV: JSON.stringify('development'),
     }),
     new HotModuleReplacementPlugin(),
+    new FaviconsWebpackPlugin({
+      logo: PATH.favicon,
+      prefix: 'icons/',
+      emitStats: false,
+      statsFilename: 'iconstats.json',
+      background: '#fff',
+      persistentCache: true,
+      inject: true,
+      icons: {
+        android: true,
+        appleIcon: true,
+        appleStartup: true,
+        coast: false,
+        favicons: true,
+        firefox: true,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false,
+      },
+    }),
   ],
   module: {
     rules: [

@@ -1,6 +1,7 @@
 const { DefinePlugin } = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const { PATH } = require('./constants');
 
 module.exports = {
@@ -26,6 +27,27 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/common.[contenthash].css',
+    }),
+    new FaviconsWebpackPlugin({
+      logo: PATH.favicon,
+      prefix: 'icons-[hash]/',
+      emitStats: false,
+      statsFilename: 'iconstats-[hash].json',
+      background: '#fff',
+      persistentCache: true,
+      inject: true,
+      icons: {
+        android: true,
+        appleIcon: true,
+        appleStartup: true,
+        coast: false,
+        favicons: true,
+        firefox: true,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false,
+      },
     }),
   ],
   module: {
