@@ -1,10 +1,6 @@
-const { join } = require('path');
 const { NoEmitOnErrorsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const PATH = {
-  src: join(__dirname, '..', 'src'),
-};
+const { PATH } = require('./constants');
 
 module.exports = {
   entry: {
