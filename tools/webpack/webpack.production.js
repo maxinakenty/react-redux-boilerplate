@@ -1,38 +1,38 @@
-const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
+const { DefinePlugin } = require('webpack');
+const AssetsWebpackPlugin = require('assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const { PATH } = require('./constants');
+const { PATH } = require('../constants');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   output: {
+    path: PATH.publicFolder,
     publicPath: '/',
-    filename: '[name].js',
-    chunkFilename: '[name].js',
+    filename: 'js/[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
   },
-  devtool: 'eval',
-  watch: true,
-  watchOptions: {
-    aggregateTimeout: 100,
+  performance: {
+    hints: false,
   },
-  devServer: {
-    overlay: true,
-    port: 3000,
-    hot: true,
-    stats: {
-      'errors-only': true,
-    },
-    historyApiFallback: true,
-  },
+  watch: false,
+  devtool: false,
   plugins: [
     new DefinePlugin({
-      NODE_ENV: JSON.stringify('development'),
+      NODE_ENV: JSON.stringify('production'),
     }),
-    new HotModuleReplacementPlugin(),
+    new AssetsWebpackPlugin({
+      filename: 'assets.json',
+      path: PATH.public,
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/common.[contenthash].css',
+    }),
     new FaviconsWebpackPlugin({
       logo: PATH.favicon,
-      prefix: 'icons/',
+      prefix: 'icons-[hash]/',
       emitStats: false,
-      statsFilename: 'iconstats.json',
+      statsFilename: 'iconstats-[hash].json',
       background: '#fff',
       persistentCache: true,
       inject: true,
@@ -58,7 +58,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'images/[name].[ext]',
+              name: 'images/[name].[hash:8].[ext]',
             },
           },
         ],
@@ -66,18 +66,19 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
+              sourceMap: false,
+              minimize: true,
             },
           },
           'resolve-url-loader',
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true,
+              sourceMap: false,
               config: {
                 path: PATH.postcssConfig,
               },
@@ -88,18 +89,19 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
+              sourceMap: false,
+              minimize: true,
             },
           },
           'resolve-url-loader',
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true,
+              sourceMap: false,
               config: {
                 path: PATH.postcssConfig,
               },
@@ -108,7 +110,10 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
+              sourceMap: false,
+              minimize: true,
+              data: '@import "vars";',
+              includePaths: [PATH.stylesFolder],
             },
           },
         ],

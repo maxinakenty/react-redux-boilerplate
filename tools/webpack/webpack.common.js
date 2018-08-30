@@ -1,10 +1,10 @@
 const { NoEmitOnErrorsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { PATH } = require('./constants');
+const { PATH } = require('../constants');
 
 module.exports = {
   entry: {
-    bundle: `${PATH.src}/index`,
+    bundle: PATH.entryJs,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
@@ -13,7 +13,7 @@ module.exports = {
     new NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Index',
-      template: `${PATH.src}/index.html`,
+      template: PATH.indexHtml,
       filename: 'index.html',
     }),
   ],
