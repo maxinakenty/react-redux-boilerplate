@@ -4,7 +4,7 @@ const { PATH } = require('../constants');
 
 module.exports = {
   entry: {
-    bundle: PATH.entryJs,
+    bundle: ['@babel/polyfill', PATH.entryJs],
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],

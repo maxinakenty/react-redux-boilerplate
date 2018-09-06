@@ -5,7 +5,7 @@ const IS_DEVELOPMENT =
 
 const PATH = {
   srcFolder: resolve(__dirname, 'src'),
-  entryJs: join(__dirname, '..', 'src', 'index.js'),
+  entryJs: join(__dirname, '..', 'src', 'index.jsx'),
   indexHtml: join(__dirname, '..', 'src', 'index.html'),
   publicFolder: join(__dirname, '..', 'public'),
   postcssConfig: join(__dirname, 'postcss.config.js'),

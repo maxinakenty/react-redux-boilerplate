@@ -9,6 +9,6 @@ module.exports = {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
   moduleFileExtensions: ['js', 'jsx', 'json', 'node', 'svg', 'png'],
-  setupFiles: ['./jestsetup.js'],
+  setupFiles: ['./jest.setup.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
 };
