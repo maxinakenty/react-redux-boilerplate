@@ -14,6 +14,18 @@
   "rules": {
     "import/no-extraneous-dependencies": 0,
     "react/jsx-one-expression-per-line": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+
+    "react/jsx-sort-props": [
+      2,
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "shorthandLast": false,
+        "ignoreCase": false,
+        "noSortAlphabetically": false,
+        "reservedFirst": false
+      }
+    ]
   }
 }
