@@ -1,1 +1,1 @@
-# React Redux Boilerplate
+# React Redux Boilerplate [![Build Status](https://travis-ci.org/mg901/react-redux-boilerplate.svg?branch=master)](https://travis-ci.org/mg901/react-redux-boilerplate) [![Coverage Status](https://coveralls.io/repos/github/mg901/react-redux-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/mg901/react-redux-boilerplate?branch=master)
