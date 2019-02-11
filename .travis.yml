@@ -1,0 +1,27 @@
+language: node_js
+cache: yarn
+node_js:
+  - node
+  - '10'
+  - '8'
+os:
+  - linux
+  - osx
+branches:
+  only:
+    - master
+    - '/^greenkeeper/.*$/'
+script:
+  - npm test
+after_success:
+  - npm run coverage
+jobs:
+  include:
+    - stage: release
+      if: branch IN (master, next)
+      node_js: node
+      script:
+        - npm run build
+        - npx semantic-release
+      env:
+        - secure: ES96fH38/SvLPzWY3cCChDJSyhinCwbyqG0Vr+LBrJlkplM3DuNZOa9+fGnbrwhoYTerTJckxkS8M9m7cAx+dfoO5/K3wYWx8oxxBBdmex6VQ4CWe4nTaQsnMndGgEiMS7V+/ORQ8ANZv2MAcenWApXy+FdAQ+AgzHExOa6qo0st7OJM1Gl4SWEnhOxH2ouLO6WuCPTTi/cZFscloTwAciUoxOXkHpcjqYGmOiw2wWcrAQ7ZsAEmSOOK0/ZnBEDcgvjxN7lENsg/N29NAX2xqv7etynmdlijT5ZRnsgK4jL9bsBUVhW2Sx/TkxYoPMnnDveSVJi7TwlU6n222UMNISV3OYLFElkulKQ7H6gBmu95131I2H6+bBnW/aXU4zUHdrIuc1KvGttmxk8rppQnvw8rbVfLHQ0QaWrygrio78H2EG2pGj1xd055zZryLhZ565E8z6LndtY29mwI9xlkxfuG+TGQxLCTYlgDV+pSmTOlrd79L2SYIrXNholT8E3caxTj3ss8t3Wkybxl9cXyU/4/0yzakBJuK/fpiTMaVOmtJTg6B8KHVDpmr7PUh1Owy/c0a/L1jPhE90FuGSvUXQ0EWRuV1kG99kiKRp/u4akgioyhD5sLgNCzZWXtN3D3EvhrAy+AxtBQNXFFY110BMoAL9WrUPXqG84bbt814Jk=

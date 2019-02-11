@@ -1,32 +1,36 @@
 const { NoEmitOnErrorsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { PATH } = require('../constants');
+const { resolve } = require('path');
+const { SRC } = require('./constants');
 
 module.exports = {
+  context: SRC,
   entry: {
-    bundle: ['@babel/polyfill', PATH.entryJs],
+    bundle: ['@babel/polyfill', './index'],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    modules: ['node_modules'],
+    alias: {},
   },
   plugins: [
     new NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Index',
-      template: PATH.indexHtml,
+      template: resolve(SRC, 'index.html'),
       filename: 'index.html',
     }),
   ],
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif|svg|woff|woff2)$/,
-        use: 'url-loader',
-      },
-      {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.js$/,
+        use: 'source-map-loader',
+        enforce: 'pre',
       },
     ],
   },

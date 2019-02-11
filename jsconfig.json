@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "checkJs": false,
+    "lib": ["es2015", "es2016", "dom"],
+    "paths": {}
+  },
+  "exclude": ["node_modules", "public"]
+}
