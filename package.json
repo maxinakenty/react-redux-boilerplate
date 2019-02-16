@@ -80,7 +80,7 @@
     "postcss-loader": "3.0.0",
     "prettier": "1.16.4",
     "reload-html-webpack-plugin": "0.1.2",
-    "resolve-url-loader": "3.0.0",
+    "resolve-url-loader": "3.0.1",
     "rimraf": "^2.6.2",
     "semantic-release": "15.13.3",
     "source-map-loader": "^0.2.4",
