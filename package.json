@@ -48,7 +48,7 @@
     "babel-jest": "24.1.0",
     "babel-loader": "^8.0.2",
     "babel-plugin-ramda": "^2.0.0",
-    "commitizen": "3.0.6",
+    "commitizen": "3.0.7",
     "coveralls": "3.0.2",
     "cross-env": "^5.1.6",
     "css-loader": "2.1.0",
