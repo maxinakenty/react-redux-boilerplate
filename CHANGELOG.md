@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/mg901/react-redux-boilerplate/compare/v1.0.2...v1.0.3) (2019-02-21)
+
+
+### Bug Fixes
+
+* **package:** update react to version 16.8.3 ([5a1d921](https://github.com/mg901/react-redux-boilerplate/commit/5a1d921))
+* **package:** update react-dom to version 16.8.3 ([168172a](https://github.com/mg901/react-redux-boilerplate/commit/168172a))
+
 ## [1.0.2](https://github.com/mg901/react-redux-boilerplate/compare/v1.0.1...v1.0.2) (2019-02-20)
 
 
