@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/mg901/react-redux-boilerplate/compare/v1.0.3...v1.0.4) (2019-03-04)
+
+
+### Bug Fixes
+
+* **package:** update react-hot-loader to version 4.7.2 ([94c732a](https://github.com/mg901/react-redux-boilerplate/commit/94c732a))
+
 ## [1.0.3](https://github.com/mg901/react-redux-boilerplate/compare/v1.0.2...v1.0.3) (2019-02-21)
 
 
