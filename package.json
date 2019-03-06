@@ -17,8 +17,8 @@
     "lint": "cross-env eslint ."
   },
   "dependencies": {
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
     "react-hot-loader": "4.7.2",
     "react-redux": "6.0.0",
     "redux": "4.0.1",
