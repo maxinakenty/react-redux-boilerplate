@@ -4433,10 +4433,10 @@ eslint-plugin-import@^2.17.2:
     read-pkg-up "^2.0.0"
     resolve "^1.10.0"
 
-eslint-plugin-jest@22.5.0:
-  version "22.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.5.0.tgz#3a02527a5b08f7232f7bb0a52da98407bf84cdd0"
-  integrity sha512-YLeCRAuU3qP9lRZMul1/IbxXGg1THVpWFPBEa+VUQkcqEtO3W9GDKZ84MxYxzKTwMChTjj1l2vuNKva8HYtGPg==
+eslint-plugin-jest@22.7.1:
+  version "22.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.7.1.tgz#5dcdf8f7a285f98040378220d6beca581f0ab2a1"
+  integrity sha512-CrT3AzA738neimv8G8iK2HCkrCwHnAJeeo7k5TEHK86VMItKl6zdJT/tHBDImfnVVAYsVs4Y6BUdBZQCCgfiyw==
 
 eslint-plugin-jsx-a11y@^6.1.1:
   version "6.2.1"
